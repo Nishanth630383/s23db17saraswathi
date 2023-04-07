@@ -1,0 +1,15 @@
+extends layout
+
+block content
+  h1= title
+  - var results = roadtransport;
+  div(class="container_fluid")
+    each item,index in results
+        div(class="row", onclick=`buy(${index})`)       
+            div(class="col-sm-2") #{item.roadtransport_type}
+            div(class="col-sm-2") #{item.roadtransport_name}
+            div(class="col-sm-2") #{item.roadtransport_cost}
+  script.
+      function buy(indexNumber){
+        alert('You purchased item '+ indexNumber)
+      }
