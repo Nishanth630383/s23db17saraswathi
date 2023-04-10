@@ -8,13 +8,13 @@ var roadtransport_controller = require('../controllers/roadtransport');
 router.get('/', api_controller.api);
 /// roadtransport ROUTES ///
 // POST request for creating a roadtransport.
-router.post('/roadtransports', roadtransport_controller.roadtransport_create_post);
+router.post('/roadtransport', roadtransport_controller.roadtransport_create_post);
 // DELETE request to delete roadtransport.
-router.delete('/roadtransports/:id', roadtransport_controller.roadtransport_delete);
+router.delete('/roadtransport/:id', roadtransport_controller.roadtransport_delete);
 // PUT request to update roadtransport.
-router.put('/roadtransports/:id', roadtransport_controller.roadtransport_update_put);
+router.put('/roadtransport/:id', roadtransport_controller.roadtransport_update_put);
 // GET request for one roadtransport.
-router.get('/roadtransports/:id', roadtransport_controller.roadtransport_detail);
+router.get('/roadtransport/:id', roadtransport_controller.roadtransport_detail);
 // GET request for list of all roadtransport items.
-router.get('/roadtransports', roadtransport_controller.roadtransport_list);
+router.get('/roadtransport', roadtransport_controller.roadtransport_list);
 module.exports = router;
