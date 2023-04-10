@@ -2,9 +2,9 @@ extends layout
 
 block content
   h1= title
-  - var results = roadtransport;
+  - var roadtransport = results;
   div(class="container_fluid")
-    each item,index in results
+    each item,index in roadtransport
         div(class="row", onclick=`buy(${index})`)       
             div(class="col-sm-2") #{item.roadtransport_type}
             div(class="col-sm-2") #{item.roadtransport_name}
