@@ -51,21 +51,21 @@ await roadtransport.deleteMany();
 let instance1 = new
 roadtransport({roadtransport_type:"2 wheeler", roadtransport_name:"Bike",
 roadtransport_cost:10000});
-instance1.save( function(err,doc) {
+instance1.save().then( function(err,doc) {
 if(err) return console.error(err);
 console.log("First object saved")
 });
 let instance2 = new
 roadtransport({roadtransport_type:"4 wheeler", roadtransport_name:"Car",
 roadtransport_cost:50000});
-instance2.save( function(err,doc) {
+instance2.save().then( function(err,doc) {
 if(err) return console.error(err);
 console.log("Second object saved")
 });
 let instance3 = new
 roadtransport({roadtransport_type:"6 wheeler", roadtransport_name:"Truck",
 roadtransport_cost:100000});
-instance3.save( function(err,doc) {
+instance3.save().then( function(err,doc) {
 if(err) return console.error(err);
 console.log("Third object saved")
 });
