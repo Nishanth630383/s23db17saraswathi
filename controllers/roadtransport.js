@@ -45,10 +45,25 @@ exports.roadtransport_delete = function(req, res) {
 res.send('NOT IMPLEMENTED: roadtransport delete DELETE ' + req.params.id);
 };
 // Handle roadtransport update form on PUT.
-exports.roadtransport_update_put = function(req, res) {
-res.send('NOT IMPLEMENTED: roadtransport update PUT' + req.params.id);
-};
-
+exports.roadtransport_update_put = async function(req, res) {
+    console.log(`update on id ${req.params.id} with body
+    ${JSON.stringify(req.body)}`)
+    try {
+    let toUpdate = await roadtransport.findById( req.params.id)
+    // Do updates of properties
+    if(req.body.roadtransport_type)
+    toUpdate.roadtransport_type = req.body.roadtransport_type;
+    if(req.body.roadtransport_name) toUpdate.roadtransport_name = req.body.roadtransport_name;
+    if(req.body.roadtransport_cost) toUpdate.roadtransport_cost = req.body.roadtransport_cost;
+    let result = await toUpdate.save();
+    console.log("Sucess " + result)
+    res.send(result)
+    } catch (err) {
+    res.status(500)
+    res.send(`{"error": ${err}: Update for id ${req.params.id}
+    failed`);
+    }
+    };
 // VIEWS
 // Handle a show all view
 exports.roadtransport_view_all_Page = async function(req, res) {
