@@ -11,9 +11,16 @@ exports.roadtransport_list = async function(req, res) {
     }
     };
     // for a specific roadtransport.
-exports.roadtransport_detail = function(req, res) {
-res.send('NOT IMPLEMENTED: roadtransport detail: ' + req.params.id);
-};
+exports.roadtransport_detail = async function(req, res) {
+    console.log("detail" + req.params.id)
+    try {
+    result = await roadtransport.findById( req.params.id)
+    res.send(result)
+    } catch (error) {
+    res.status(500)
+    res.send(`{"error": document for id ${req.params.id} not found`);
+    }
+    };
 // Handle roadtransport create on POST.
 exports.roadtransport_create_post = async function(req, res) {
     console.log(req.body)
@@ -54,14 +61,3 @@ exports.roadtransport_view_all_Page = async function(req, res) {
     res.send(`{"error": ${err}}`);
     }
 };
-
-exports.roadtransport_detail = async function(req, res) {
-    console.log("detail" + req.params.id)
-    try {
-    result = await roadtransport.findById( req.params.id)
-    res.send(result)
-    } catch (error) {
-    res.status(500)
-    res.send(`{"error": document for id ${req.params.id} not found`);
-    }
-    };
