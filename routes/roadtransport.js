@@ -21,4 +21,6 @@ router.get('/', roadtransport_controlers.roadtransport_view_all_Page );
 
 /* GET detail roadtransport page */
 router.get('/detail', roadtransport_controlers.roadtransport_view_one_Page);
+/* GET create roadtransport page */
+router.get('/create', roadtransport_controlers.roadtransport_create_Page);
 module.exports = router;
