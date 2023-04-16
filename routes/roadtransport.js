@@ -25,4 +25,6 @@ router.get('/detail', roadtransport_controlers.roadtransport_view_one_Page);
 router.get('/create', roadtransport_controlers.roadtransport_create_Page);
 /* GET create update page */
 router.get('/update', roadtransport_controlers.roadtransport_update_Page);
+/* GET delete roadtransport page */
+router.get('/delete', roadtransport_controlers.roadtransport_delete_Page);
 module.exports = router;
