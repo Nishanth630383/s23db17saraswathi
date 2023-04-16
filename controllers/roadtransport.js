@@ -40,10 +40,19 @@ exports.roadtransport_create_post = async function(req, res) {
     res.status(500);
     res.send(`{"error": ${err}}`);
     }
-    };// Handle roadtransport delete form on DELETE.
-exports.roadtransport_delete = function(req, res) {
-res.send('NOT IMPLEMENTED: roadtransport delete DELETE ' + req.params.id);
-};
+    };
+// Handle roadtransport delete on DELETE.
+exports.roadtransport_delete = async function(req, res) {
+    console.log("delete " + req.params.id)
+    try {
+    result = await roadtransport.findByIdAndDelete( req.params.id)
+    console.log("Removed " + result)
+    res.send(result)
+    } catch (err) {
+    res.status(500)
+    res.send(`{"error": Error deleting ${err}}`);
+    }
+   };
 // Handle roadtransport update form on PUT.
 exports.roadtransport_update_put = async function(req, res) {
     console.log(`update on id ${req.params.id} with body
