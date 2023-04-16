@@ -18,4 +18,7 @@ router.get('/', function(req, res, next) {
   res.render('roadtransport', { title: 'Search Results Road Transport',roadtransport : [r1,r2,r3] });
 });*/
 router.get('/', roadtransport_controlers.roadtransport_view_all_Page );
+
+/* GET detail roadtransport page */
+router.get('/detail', roadtransport_controlers.roadtransport_view_one_Page);
 module.exports = router;
