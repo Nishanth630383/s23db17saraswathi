@@ -1,10 +1,13 @@
 extends layout
 block content
  h1= title
- - let roadtransportid = toShow._id
- - let roadtransport_type = toShow.roadtransport_type
- - let roadtransport_name = toShow.roadtransport_name
- - let roadtransport_cost = toShow.roadtransport_cost
+ if (toShow == null)
+  h2 No instance to delete
+ else
+  - let roadtransportid = toShow._id
+  - let roadtransport_type = toShow.roadtransport_type
+  - let roadtransport_name = toShow.roadtransport_name
+  - let roadtransport_cost = toShow.roadtransport_cost
  div
  div.row
  div(class='roadtransportAttr mr-3') Roadtransport ID is:

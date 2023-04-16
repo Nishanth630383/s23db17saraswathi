@@ -1,12 +1,15 @@
 extends layout
 block content
- h1= title
- - let roadtransportid = toShow._id
- - let roadtransport_type = toShow.roadtransport_type
- - let roadtransport_name = toShow.roadtransport_name
- - let roadtransport_cost = toShow.roadtransport_cost
+ h1(class= 'title')= title
+ if (toShow == null)
+  h2 No instance to update
+ else
+  - let roadtransportid = toShow._id
+  - let roadtransport_type = toShow.roadtransport_type
+  - let roadtransport_name = toShow.roadtransport_name
+  - let roadtransport_cost = toShow.roadtransport_cost
 
- div.row(class='mb-2')
+ div.row(class='mb-2, style')
   div.mr-1 ID is
   div #{roadtransportid}
  - let actionid = "/resource/roadtransport/" + roadtransportid
