@@ -5,10 +5,16 @@ block content
   - var roadtransport = results;
   div(class="container_fluid")
     each item,index in roadtransport
+     - let destination = `dispatch(\"/roadtransport/update?id=${item._id}\")`
         div(class="row", onclick=`buy(${index})`)       
             div(class="col-sm-2") #{item.roadtransport_type}
             div(class="col-sm-2") #{item.roadtransport_name}
             div(class="col-sm-2") #{item.roadtransport_cost}
+        button.btn( class="btn-primary ml-1", onclick= destination) Update
+  script.
+   function dispatch(path){
+    window.location.href=path
+   }
   script.
       function buy(indexNumber){
         alert('You purchased item '+ indexNumber)
