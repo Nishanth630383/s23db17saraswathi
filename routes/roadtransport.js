@@ -21,8 +21,8 @@ router.get('/', roadtransport_controlers.roadtransport_view_all_Page );
 
 /* GET detail roadtransport page */
 router.get('/detail', roadtransport_controlers.roadtransport_view_one_Page);
-/* GET create roadtransport page */
-router.get('/create', roadtransport_controlers.roadtransport_create_Page);
+
+
 /* GET create update page */
 // redirect to login.
 const secured = (req, res, next) => {
@@ -33,6 +33,9 @@ const secured = (req, res, next) => {
     res.redirect("/login");
     }
     router.get('/update', secured,roadtransport_controlers.roadtransport_update_Page);
+
+    /* GET create roadtransport page */
+    router.get('/create',secured, roadtransport_controlers.roadtransport_create_Page);
     /* GET delete roadtransport page */
-router.get('/delete', roadtransport_controlers.roadtransport_delete_Page);
+router.get('/delete',secured, roadtransport_controlers.roadtransport_delete_Page);
 module.exports = router;

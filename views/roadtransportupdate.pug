@@ -16,10 +16,10 @@ block content
   form(id='roadtransportForm', action= actionid, method="PUT")
     div.form-group
       label.roadtransportAttr(for='roadtransport_type') Roadtransport type
-      input#roadtransport_type(type='String', name='roadtransport_type', value= roadtransport_type )
+      input#roadtransport_type(type='String', name='roadtransport_type', value= roadtransport_type, minlenght=1, maxlength=20 )
     div.form-group
       label.roadtransportAttr(for='roadtransport_name') Roadtransport siznamee
-      input#roadtransport_name(type='String', name='roadtransport_name', value= roadtransport_name )
+      input#roadtransport_name(type='String', name='roadtransport_name', value= roadtransport_name, minlenght=1, maxlength=20 )
     div.form-group
       label.roadtransportAttr(for='roadtransport_cost') Roadtransport cost
       input#roadtransport_cost(type='number', name='roadtransport_cost', value= roadtransport_cost, min='100', max='100000' )
