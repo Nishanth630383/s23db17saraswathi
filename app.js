@@ -3,22 +3,6 @@ var express = require('express');
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
-
-require('dotenv').config();
-const connectionString =
-process.env.MONGO_CON
-mongoose = require('mongoose');
-mongoose.connect(connectionString,
-{useNewUrlParser: true,
-useUnifiedTopology: true});
-
-var indexRouter = require('./routes/index');
-var usersRouter = require('./routes/users');
-var roadtransportRouter = require('./routes/roadtransport');
-var boardRouter = require('./routes/board');
-var selectorRouter = require('./routes/selector');
-var roadtransport = require('./models/roadtransport');
-var resourceRouter = require('./routes/resource');
 var passport = require('passport');
 var LocalStrategy = require('passport-local').Strategy;
 passport.use(new LocalStrategy(
@@ -35,6 +19,23 @@ passport.use(new LocalStrategy(
   });
   }
   ));
+
+require('dotenv').config();
+const connectionString =
+process.env.MONGO_CON
+mongoose = require('mongoose');
+mongoose.connect(connectionString,
+{useNewUrlParser: true,
+useUnifiedTopology: true});
+
+var indexRouter = require('./routes/index');
+var usersRouter = require('./routes/users');
+var roadtransportRouter = require('./routes/roadtransport');
+var boardRouter = require('./routes/board');
+var selectorRouter = require('./routes/selector');
+var roadtransport = require('./models/roadtransport');
+var resourceRouter = require('./routes/resource');
+
 var app = express();
 
 // view engine setup

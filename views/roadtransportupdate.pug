@@ -22,7 +22,7 @@ block content
       input#roadtransport_name(type='String', name='roadtransport_name', value= roadtransport_name )
     div.form-group
       label.roadtransportAttr(for='roadtransport_cost') Roadtransport cost
-      input#roadtransport_cost(type='number', name='roadtransport_cost', value= roadtransport_cost )
+      input#roadtransport_cost(type='number', name='roadtransport_cost', value= roadtransport_cost, min='100', max='100000' )
     input(type="submit")
   script.
     document.forms['roadtransportForm'].addEventListener('submit', (event) => {
