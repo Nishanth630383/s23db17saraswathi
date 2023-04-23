@@ -10,32 +10,24 @@ router.get('/register', function(req, res) {
 
   res.render('register', { title: 'Roadtransport App Registration'});
 });
-router.post('/register', function(req, res) {
-  Account.findOne({ username : req.body.username },
-    function(err, user) {
-      if(err) {
-        return res.render('register', { title: 'Registration',
-        message: 'Registration error', account : req.body.username })
-      }
-      if(user == {} ){
-        return res.render('register', { title: 'Registration',
-        message: 'Existing User', account : req.body.username })
-      }
-      let newAccount = new Account({ username : req.body.username });
-      Account.register(newAccount, req.body.password, function(err, user){
-      if (err) {
-        return res.render('register', { title: 'Registration',
-        message: 'access error', account : req.body.username })
-      }
-      if(!user){
-        return res.render('register',{ title: 'Registration',
-        message: 'access error', account : req.body.username })
-      }
-      console.log('Sucess, redirect');
-      res.redirect('/');
-    })
-  })
-})
+router.post('/register', async function(req, res) {
+  try {
+    const user = await Account.findOne({ username : req.body.username }).exec();
+    if(user){
+      return res.render('register', { title: 'Registration',
+            message: 'Existing User', account : req.body.username });
+    }
+    let newAccount = new Account({ username : req.body.username });
+    const registeredUser = await Account.register(newAccount, req.body.password);
+    console.log('Success, redirect');
+    res.redirect('/');
+  } catch (err) {
+    console.error(err);
+    return res.render('register', { title: 'Registration',
+            message: 'Registration error', account : req.body.username });
+  }
+});
+
 router.get('/login', function(req, res) {
   res.render('login', { title: 'Roadtransport App Login', user : req.user });
 });
